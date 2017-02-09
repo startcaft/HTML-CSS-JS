@@ -1,0 +1,153 @@
+介绍 Layui.js 最常用的框架支撑的作用。
+
+
+全局配置
+方法：layui.config(options)
+可以在使用组件之前，全局化配置一些参数（非必需的）。目前支持的全局配置如下：
+
+layui.config({
+	dir : '/js/layui/layui.js',		//layui.js 所在路径（如果是script单独引入layui.js，无需该配置），一般情况下可以无视。
+	version : false,				//一般用于更新组件缓存，默认不开启。设置true即让浏览器不缓存。也可以设为一个固定的值，如：20170203
+	debug : false,					//是否开启调试模式，默认false，如果为true，则JS模块的节点会保留在页面
+	base : ''						//设定自定义的模块所在的目录，一般用于对外部组件扩展
+});
+
+
+
+定义模块
+方法：layui.define([mods],callback)
+通过该方法定义一个 Layui模块。参数 mods 是可选的，用于声明本次定义的模块所依赖的模块。callback即为模块加载完毕的回掉函数，
+它返回一个 exports 参数，用于输出该模块的接口。
+
+layui.define(function(exports){
+	//do something
+	
+	exports('demo',function(){
+		alert('Hello World!');
+	});
+})
+
+exports是一个参数，它接受两个参数，第一个参数为模块名，第二个参数为模块接口，当声明了上述的模块后，
+就可以在外部使用了，demo 模块就会注册到 layui 对象下，即可通过 layui.demo() 去执行该模块的接口。
+也可以在定义一个模块的时候，声明该模块所需的依赖：
+
+layui.define(['layer','laypage'],function(exports){
+	//do something
+	
+	exports('demo', function(){
+		alert('Hello World!');
+	});
+});
+
+上述的 ['layer','laypage'] 即为本模块所依赖的模块，它并非只能是一个数组，也可以直接传一个字符型的模块名，但是这样只能依赖一个模块。
+
+
+
+加载所需模块
+方法：layui.use([mods],callback)
+Layui的内置模块并非默认就加载的，必需在执行该方法后才会加载。它的参数跟上述的 define 方法完全一样。
+注意：mods 参数必须是一个合法的模块名，不能包含目录。如果需要加载目录，建议采用extend建立别名（相见组件规范）
+
+layui.use(['laypage', 'layedit'],function(){
+	var laypage = layui.laypage
+  	,layedit = layui.layedit;
+  	
+  	//do something
+});
+
+该方法的函数其实返回了所加载的模块接口，所以其实也可以不通过 layui 对象赋值获得接口
+
+layui.use(['laypage', 'layedit'],function(laypage,layedit){
+	//使用分页
+	laypage();
+	
+	//建立编辑器
+	layedit.build();
+});
+
+
+动态加载CSS
+方法：layui.link(href)
+参数 href 即为css文件的路径。它一般只是用于动态加载外部CSS文件。
+
+
+
+本地存储
+方法：layui.data(table,settings)
+参数 table 为表明，参数 settings 是一个对象，用于设置 key，value。
+该方法对localStorage进行了良好的封装，在Layui的多个内置组件（比如layim）中发挥了重要的作用，
+因此我们可以使用它存储一些本地数据。
+
+//添加：向test表插入一个nickname字段，如果该表不存在，则自动建立。
+layui.data('test',{
+	key : 'nickname',
+	value : 'startcaft'
+});
+//删除：删除test表中的nickname字段
+layui.data('test',{
+	key : 'nickname',
+	remove : true
+});
+//删除test表
+layui.data('test',null);
+//修改：和添加一样，会覆盖已经存在的数据
+layui.data('test',{
+	key : 'nickname',
+	value : 'startcaft'
+});
+//查询：读取test表中的所有数据
+var localTest = layui.data('test');
+console.log(localTest.nickname);//获取"startcaft"
+
+
+
+获取设备信息
+方法：layui.device(key)，参数 key 是可选的
+由于Layui的一些功能进行了兼容性处理和响应式支持，因此该方法同样发挥了至关重要的作用。
+尤其是在layui mobile模块中的作用可谓举足轻重。该方法返回了丰富的设备信息
+
+var device = layui.device();
+//device即可根据不同的设备返回下述不同的信息
+{
+  os: "windows",	//底层操作系统，windows、linux、mac等
+  ie: false, 		//ie6-11的版本，如果不是ie浏览器，则为false
+  weixin: false, 	//是否微信环境
+  android: false, 	//是否安卓系统
+  ios: false, 		//是否ios系统
+}
+
+有时候我们的App可能会对userAgent插入一段特定的表示，譬如：
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 myapp/1.8.6 Safari/537.36
+我们要验证当前的WebView是否存在我们的App环境，即可通过上述的 myapp（即为Native给WebView插入的标识，可以所以定义）来判断。
+
+var device = layui.device('myapp');
+if(device.myapp){
+  alert('在我的App环境');
+}  
+
+
+
+其他
+layui.js内部还提供了许多底层引擎，它们同样是整个Layui框架体系的有力支撑，所以有必要露个脸，但是一般不会被用到。
+
+layui.cache------静态属性。获得一些配置及临时的缓存信息
+layui.getStyle(node, name)------获得一个原始DOM节点的style属性值，如：layui.getStyle(document.body, 'font-size')
+layui.img(url, callback, error)------图片预加载
+layui.extend(options)------拓展一个模块别名，如：layui.extend({test: '/res/js/test'})
+layui.router()------获得location.hash路由，目前在Layui中没发挥作用。对做单页应用会派上用场。
+layui.hint()------向控制台打印一些异常信息，目前只返回了error方法：layui.hint().error('出错啦')
+layui.each(obj, fn)------对象（Array、Object、DOM对象等）遍历，可用于取代for语句
+layui.stope(e)------阻止事件冒泡
+layui.onevent(modName, events, callback)------自定义模块事件，属于比较高级的应用。有兴趣的同学可以阅读layui.js源码以及form模块
+layui.event(modName, events, params)------执行自定义模块事件，搭配onevent使用
+
+
+
+第三方支撑
+Layui部分组件依赖 jQery（比如layer），但是我们并不用去额外加载jQuery。
+因为Layui已经将jQuery最稳定的一个版本改为Layui的内部模块，当我们使用如 layer 的时候，它会先判断我们的页面是否已经引入了jQuery，
+如果没有，则加载内部的ujQery模块，如果有，则不会加载。
+
+另外，Layui的图标取材于阿里巴巴矢量图图标（iconfont），构建工具采用 Gulp。
+
+除此之外，不依赖于任何第三方工具。

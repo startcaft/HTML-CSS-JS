@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>开始使用Layui</title>
+		<link href="js/layui/css/layui.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- 我们的HTML代码 -->
+		
+		<!--引入layui.js-->
+		<script type="text/javascript" src="js/layui/layui.js">
+		</script>
+		<!--我们的js-->
+		<script type="text/javascript">
+			//一般会是直接写在一个js文件中 
+			layui.use(['layer','form'],function(){
+				var layer = layui.layer;
+				
+				layer.msg('Hello World');
+			});
+		</script>
+		
+	</body>
+</html>

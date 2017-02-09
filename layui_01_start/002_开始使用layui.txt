@@ -1,0 +1,75 @@
+"现在想简简单单的写个前端怎么就变得这么难呢？"，这是当前情况下许多程序员的吐槽。
+没办法，前端现在正处于一个超出常理，且疯狂造轮子的黄金时代，有点"五代十国"般的感觉。
+透过那些高逼格的工具的本质，最终依然是 HTML，CSS，JavaScript 三驾马车，为何不跟随原生态的稳健脚步，安安静静地code呢？
+
+
+
+Layui 定义为"经典模块化"【参考<<JS模块化编程介绍.txt>>】，她的所谓经典，是在对于返朴归真的执念。
+//layui 模块的定义
+layui.define([mods],function(exports){
+	//..
+	
+	exports('mod',api);
+});
+
+//layui 模块的使用
+layui.use(['mod1','mod2'],function(args){
+	var mod1 = layui.mod1;
+	//...
+	
+});
+
+Layui 坚持采用经典模块化，也正是能让程序员避开工具的复杂配置，回归简单，安静高效的code。
+Layui 并非是Requirejs那样的模块加载器，而是一款UI解决方案，她与Bootstrap最大的不同恰恰在于她糅合了自身对经典模块化的理解。
+
+
+
+快速上手
+获取layui后，将其完整地不熟到项目目录（或者静态资源服务器中），只需要引入下面两个文件：
+./layui/css/layui.css
+./layui/layui.js
+
+是的，就是这么简单粗暴。因为其他的文件（比如各模块）都是在最终使用的时候才会自动加载的。撸代码吧。。。
+
+
+
+规范化的用法(推荐)
+官方建议开发者遵循Layui的模块规范，建立一个自己的模块作为入口：
+<script>
+	layui.config({
+		base:'res/js/modules'	//我们的模块所在的目录
+	}).use('index');			//加载入口
+</script>
+
+上述的 index 即是 /res/js/modules/ 目录下的 index.js，它的内容应该如下：
+
+/**
+ * 定义一个 index 模块，依赖于Layui的layer模块
+ */
+layui.define(['layer'],function(exports){
+	var layer = layui.layer;
+	
+	layer.msg('Hello World');
+	
+	exports('index',{});	//注意，这里是模块输出的核心，模块名称必须和use时的模块名一致
+});
+
+
+
+简单粗暴的用法
+这种方式适合后台程序员，觉得Layui的模块化有点啰嗦，官方将 layui.js 以及所有的模块单独合并成了一个完整的js文件，
+直接引用这个文件即可。当采用这样的方法，【无需通过layui.use来加载模块】，直接使用即可，如：
+
+<script src="../layui/lay/dest/layui.all.js"></script>  
+<script>
+	;!function(){
+		//当使用了 layui.all.js，无需再执行layui.use()方法
+		var layer = layui.layer;
+	  	layer.msg('Hello');
+	}();
+</script> 
+
+使用这种方式，意味着Layui的模块化已经失去了它的意义，但是不可否认，它比什么都来的简单。
+不管用什么方式，尽情使用Layui吧，但愿这是一段美妙的旅程。
+
+Layui官方网站：http://www.layui.com/
