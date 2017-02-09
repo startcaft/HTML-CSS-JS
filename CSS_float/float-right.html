@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+		<meta charset="utf-8" />
+		<title>盒子模型浮动实例1</title>
+		<style type="text/css">
+			 body{							/*设置页面整体样式*/
+			 	margin: 10px;				/*设置外边距*/
+			 	font-family: "宋体";			/*设置字体族*/
+			 	font-size: 12px;			/*设置字号*/
+			 	color: #FFF;				/*设置字体颜色*/
+			 }
+			 
+			 .root{							/*定义类别选择器*/
+			 	background-color: #0C6;		/*定义背景颜色*/
+			 	border: 1px solid #F00;		/*设置边框样式*/
+			 	padding: 10px;				/*设置内边距*/
+			 }
+			 
+			 .root div{						/*定义root下div节点样式*/
+			 	padding: 10px;				/*设置内边距*/
+			 	margin: 15px;				/*设置外边距*/
+			 	border: 1px dashed #FF0;	/*设置边框样式*/
+			 	background-color: #00F;		/*设置背景颜色*/
+			 }
+			 
+			 .root p{						/*定义root下p节点样式*/
+			 	border: 1px dashed #FF0000;	/*设置边框样式*/
+			 	background-color: #00F;		/*设置背景颜色*/
+			 	clear: right;				/*清除浮动对文字的影响*/
+			 }
+			 
+			 .box1{							/*定义box1样式*/
+			 	float: right;				/*设置box1向右浮动*/
+			 }
+			 .box2{							/*定义box2样式*/
+			 	float: right;				/*设置box2向右浮动*/
+			 }
+			 .box3{							/*定义box3样式*/
+			 	float: right;				/*设置box3向右浮动*/
+			 }
+		</style>
+	</head>
+	<body>
+		<div class="root">
+			<div class="box1">盒子1</div>
+			<div class="box2">盒子2</div>
+			<div class="box3">盒子3</div>
+			<p>
+				浮动盒子外边文字，浮动盒子外边文字，浮动盒子外边文字，浮动盒子外边文字，浮动
+				盒子外边文字，浮动盒子外边文字，浮动盒子外边文字，浮动盒子外边文字
+			</p>
+		</div>
+	</body>
+</html>
