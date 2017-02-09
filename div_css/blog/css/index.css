@@ -1,0 +1,170 @@
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:0px;
+	padding:0px;
+	background-color:#000000;
+}
+/**
+ * 结解决浮动后父元素高度塌陷的问题
+ */
+.clearfix:before,
+.clearfix:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.clearfix{
+	/*兼容IE6*/
+	zoom: 1;
+}
+
+.container{
+	width:760px;
+	margin: 0px auto;					/*内容居中*/
+	background-color:#fff;
+	border-left:1px dashed #aaa;		/* 添加虚线框 */
+	border-right:1px dashed #aaa;
+}
+.index-header .banner{
+	width:760px; 
+	height:165px;	/* 设置块的尺寸，高度大于banner图片 */
+	margin:0px; 
+	padding:0px;
+	/* 再设置背景颜色，作为导航菜单的背景色 */
+	background: #daeeff url(../img/banner.jpg) no-repeat top;
+	position: relative;
+}
+.index-header ul{
+	position: absolute;
+	left:400px; top:140px;		/* 具体位置 */
+	padding:0px; margin:0px;
+}
+.index-header  li{
+	float:left; 
+	text-align:center;
+	padding:9px 6px;	/* 链接之间的距离 */
+}
+.index-header li a:link, .index-header li a:visited{
+	color:#004a87;
+	text-decoration:none;
+}
+.index-header li a:hover{
+	color:#FFFFFF;
+	text-decoration:underline;
+}
+
+/**
+ * 内容相关-左边
+ */
+.index-content .content-left{
+	width:210px;
+	padding:0px;
+	margin:0px;
+}
+.content-left{
+	float: left;
+}
+.content-left .left-author{
+	text-align:center;
+	background:url(../img/mypic_bg.gif) no-repeat;		/* 设置一个背景图片 */
+}
+.content-left .mypic{
+	border:none;
+	padding:15px 0px 0px 0px;
+	margin:0px 0px 8px 0px;
+}
+.content-left .mypic img{
+	border:1px solid #444;
+	padding:2px; margin:0px;
+}
+.content-left .text{
+	margin:0px 10px 0px 10px;
+	padding:3px 0px 3px 0px;
+	border-bottom:1px dashed #999;
+	border-top:1px dashed #999;
+}
+.content-left .left-section{
+	margin-top:25px;
+}
+.content-left .left-section h4{					/* 统一设置 */
+	background:url(../img/leftbg.jpg) no-repeat;
+	font-size:12px;
+	padding: 6px 0px 5px 27px;
+	margin:0px;
+}
+.content-left ul{
+	padding:0px;
+	margin:5px 5px 0px 25px
+}
+.content-left li a:link, 
+.content-left li a:visited{
+	color:#000000;
+	text-decoration:none;
+}
+.content-left li a:hover{
+	color:#008cff;
+	text-decoration:underline;
+}
+.content-left .section-links li{
+	float:left;		/* 显示为同一行 */
+	width:80px;		/* 指定每一项的宽度 */
+	background:none;
+	padding:0px;
+	border:none;
+}
+.content-left .section-category li{
+	padding:2px 3px 2px 15px;
+	background:url(../img/icon/icon1.gif) no-repeat left center;
+	border-bottom:1px dashed #999;		/* 虚线作为下划线 */
+}
+/*右边*/
+.content-right{
+	float:left;
+	margin:0px 20px 5px 20px;
+	width:510px;
+}
+.content-right .article{
+	position:relative;
+	margin:20px 0px 30px 0px;
+}
+.content-right .article h3{
+	font-size:15px;
+	margin:0px;
+	padding:0px 0px 3px 0px;
+	border-bottom:1px dotted #999;			/* 下划淡色虚线 */
+}
+.content-right .article h3 a:link, 
+.content-right .article h3 a:visited{
+	color:#662900;
+	text-decoration:none;
+}
+.content-right .article h3  a:hover{
+	color:#0072ff;
+}
+.article .author{
+	margin:0px;
+	text-align:right;
+	color:#888888;
+	padding:2px 5px 2px 0px;
+}
+.article .content{
+	margin:0px;
+	padding:10px 0px 10px 0px;
+	font:12px/1.5 "宋体";
+}
+.article .show{
+	font: bold 12px "宋体";
+}
+/**
+ * 底部相关
+ */
+.index-footer{
+	border-right:1px dashed #aaa;
+}
+.index-footer p{
+	margin:0px; padding:2px;
+	text-align:center;
+	background-color:#daeeff;
+	color:#004a87;
+}

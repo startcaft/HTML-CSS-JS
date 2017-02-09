@@ -1,0 +1,325 @@
+/*
+ * 在这里编辑主页的样式表
+ */
+
+/**
+ * 结解决浮动后父元素高度塌陷的问题
+ */
+.clearfix:before,
+.clearfix:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.clearfix{
+	/*兼容IE6*/
+	zoom: 1;
+}
+
+/*
+ * 设置body
+ */
+body{
+	/*设置bbody的背景图片水平方向重复*/
+	background: url(../img/bd_bg.png) repeat-x;
+	/*height: 3000px;*/
+}
+.w{
+	/*固定元素宽度和居中*/
+	width:940px;
+	margin: 0px auto;
+}
+.header{
+	/*设置上下内边距*/
+	padding-top: 37px;
+	padding-bottom: 46px;
+/*	background-color: #bfa;*/
+}
+.logo{
+	/*设置logo的位置*/
+	margin-left: 15px;
+}
+
+/*
+ * 设置nava导航条
+ */
+.nav{
+	float: right;
+	/*设置上外边距*/
+	margin-top: 22px;
+}
+.nav li{
+	float: left;
+	/*添加左右内边距*/
+	padding: 0px 10px 10px;
+	/*设置左侧边框,IE6不支持点状边框，解决方案是可以截图设置边框背景*/
+	border-left: 1px dotted #d6d6d6;
+}
+/*设置导航条下面的超链接*/
+.nav a{
+	/*设置字体*/
+	font: bold 14px Georgia;
+	/*设置字体颜色*/
+	color: #666;
+	/*去除下划线*/
+	text-decoration: none;
+}
+.nav a:hover{
+	color: #a1a1a1;
+	text-decoration: underline;
+}
+/*
+ * 设置导航条超链接的小标题,
+ * 在chrome浏览器中字体最小支持到12px
+ */
+.nav p{
+	color: #b7b7b7;
+	font:11px Tahoma;
+}
+
+/**
+ * 设置banner
+ */
+.banner{
+	height: 356px;
+	/*banner阴影的设置*/
+	background: url(../img/banner-bg.png) no-repeat bottom center;
+	/*开启相对定位，为了方便父元素在其内部进行定位*/
+	position: relative;
+}
+/*设置banner图片切换按钮所在的div*/
+.pointerDiv{
+	/*开启绝对定位，相对于父元素定位要容易点，父元素开启相对定位*/
+	position: absolute;
+	top: 314px;
+	left: 15px;
+}
+/**
+ * 设置banner图片切换按钮
+ */
+.pointerDiv a{
+	float: left;
+	/*设置宽度，需要先转换成块级元素，或者浮动(内联变块级)*/
+	width: 17px;
+	height: 17px;
+	/*background-color: red;*/
+	background: url(../img/pointer.png) no-repeat;
+	margin-left: 4px;
+}
+.pointerDiv .active,
+.pointerDiv a:hover{
+	background: url(../img/pointer-selected.png) no-repeat;
+}
+
+/**
+ * 设置content部分
+ */
+.content{
+/*	background-color: red;*/
+}
+.content h1{
+	text-align: center;
+	font: bold 24px Georgia;
+	/*设置上内边距，避免和父元素的垂直外边距重叠*/
+	padding-top: 6px;
+	/*设置背景*/
+	background: url(../img/content-line.png) no-repeat bottom center;
+	padding-bottom: 20px;
+	margin-bottom: 38px;
+}
+.content .pl , .content .cs , .content .uc,
+.contact .cs , .contact .co , .contact .nu{
+	/*一旦设置了浮动，一定要注意高度塌陷的问题*/
+	float: left;
+	width: 300px;
+}
+.content .cs,
+.contact .co{
+	margin: 0px 20px;
+}
+/*内容中的主标题*/
+.content h2{
+	color: #11719e;
+	font: 21px Georgia;
+}
+.content .p1{
+	color: #8c8c8c;
+	font: 12px helvetica;
+}
+.content .p2{
+	height: 92px;
+	color: #3e3e3e;
+	font: 13px helvetica;
+	word-spacing: 2px;
+}
+.content .img{
+	width: 299px;
+	height: 190px;
+	background: url(../img/img-bg.png) no-repeat;
+	/*设置上下外边距*/
+	margin: 16px 0px 10px 0px;
+	/*设置水平居中*/
+	text-align: center;
+	/*设置上内边距，垂直居中*/
+	padding-top: 12px;
+}
+.content .lm{
+	height: 40px;
+	width: 163px;
+	display: block;
+	background: url(../img/btn-1.png) no-repeat;
+	text-decoration: none;
+	color: #016999;
+	font: 12px/40px helvetica;
+	text-indent: 1em;
+	margin-bottom: 35px;
+}
+
+/**
+ * 设置contact联系栏
+ */
+.contact{
+	background: url(../img/content-line.png) no-repeat top center;
+}
+/*设置联系栏表单项背景,表单项默认自带边框*/
+.contact .txt{
+	/*去除默认内边距*/
+	padding: 0px 10px;
+	margin: 0px 0px 16px;
+	width: 276px;
+	height: 33px;
+	background: url(../img/input.png) no-repeat;
+	/*单独为IE6设置背景不随元素滚动*/
+	_background-attachment: fixed;
+	border: none;
+	line-height: 33px;
+}
+.contact .tarea{
+	/*去除默认内边距*/
+	padding: 10px;
+	background: url(../img/textarea.png) no-repeat;
+	/*单独为IE6设置背景不随元素滚动*/
+	_background-attachment: fixed;
+	width: 276px;
+	height: 114px;
+	border: none;
+	/*去除滚动条，根据内容自动生成*/
+	overflow: auto;
+	/*设置文本域不可调整大小*/
+	resize: none;
+}
+.contact .btn{
+	/*去除默认内边距*/
+	padding: 0px;
+	background: url(../img/btn-2.png);
+	width: 163px;
+	height: 32px;
+	border: none;
+	margin-top: 11px;
+	margin-bottom: 23px;
+	font: 13px Georgia;
+	color: #fff;
+	text-align: left;
+	text-indent: 1em;
+	
+	/**
+	 * 用来设置鼠标指针的样式
+	 */
+	cursor: pointer;
+}
+.nu .btn{
+	/*针对IE下.contact.btn的text-indent:1em会导致按钮文字和图表一起缩进*/
+	_margin-left:-1em;
+}
+.contact h2{
+	color: #444;
+	font: 18px/1 Georgia;
+	/*设置下边框*/
+	border-bottom: 1px dashed #d3d3d3;
+	/*设置内边距*/
+	padding: 44px 0px 10px 0px;
+	/*设置下外边距*/
+	margin-bottom: 15px;
+}
+.cs .p1{
+	color: #444;
+	font: 12px/1 helvetica;
+}
+.cs .icon{
+	/*清楚div中的字体大小为0，清除掉图片中的空格，设置浮动也是一样的*/
+	font-size: 0px;
+}
+/*设置小图标*/
+.cs .icon a{
+	margin-right: 0px;
+}
+/*设置联系栏左侧的第二个标题*/
+.cs .nl{
+	font: bold 18px/1 "gill sans mt";
+	padding: 33px 0px 10px;
+}
+.cs .txt{
+	margin-top: 15px;
+	/*为IE6设置上外边距*/
+	_margin-top: 19px;
+	margin-bottom: 0px;
+}
+
+/**
+ * 设置联系栏右侧
+ */
+.nu p{
+	color: #444;
+	font: 12px/1 helvetica;
+	height: 58px;
+	/*单独为IE6设置高度*/
+	_height:60px;
+	/*设置下边框*/
+	/*设置下边框*/
+	border-bottom: 1px dashed #d3d3d3;
+	margin-bottom: 14px;
+	padding-bottom: 9px;
+}
+.nu img{
+	float: left;
+	margin-right: 8px;
+}
+.nu .nomargin{
+	margin-bottom: 0px;
+}
+
+/**
+ * 设置底部
+ */
+.footer{
+	height: 173px;
+	background: #333;
+	/*设置上边框*/
+	border: 10px solid #4c4c4c;
+}
+.footer a,
+.footer p{
+	color: #999;
+	font: 11px helvetica;
+	text-decoration: none;
+}
+.footer p{
+	margin-left:8px;
+	margin-right: 23px;
+	margin-bottom: 10px;
+}
+.footer .copy{
+	float: right;
+	/*解决IE6下双倍外边距的BUG*/
+	display: inline;
+}
+.footer .w{
+	/*这里还不能设置margin，因为.w设置了居中*/
+/*	margin: 18px 23px 0px 8px;*/
+	padding-top: 18px;
+}
+.footer a:hover{
+	color: #F5F5F5;
+	text-decoration: underline;
+}
+
