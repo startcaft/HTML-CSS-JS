@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>继承关系的应用实例</title>
+		<style type="text/css">
+			h1{
+				color: blue;					/*设置文字颜色*/
+				text-decoration: underline;		/*设置文字下划线修饰*/
+			}
+			em{
+				color: red;						/*设置颜色*/
+			}
+			li{
+				font-weight: bold;				/*设置字体加粗*/
+			}
+		</style>
+	</head>
+	<body>
+			<!--
+            	作者：51418996@qq.com
+            	时间：2016-10-25
+            	描述：em标签继承了h1的下划线，所有li标签都继承了加粗属性
+            -->
+			<h1>继承<em>关系</em>应用实例</h1>
+			<ul>
+				<li>第一层行一
+					<ul>
+						<li>第二层行一</li>
+						<li>第二层行二
+							<ul>
+								<li>第二层行二下第三层行一</li>
+								<li>第二层行二下第三层行二</li>
+								<li>第二层行二下第三层行三</li>
+							</ul>
+						</li>
+						<li>第二层行三</li>
+					</ul>
+				</li>
+				<li>
+					第一层行二
+					<ol>
+						<li>第一层行二下第二层行一</li>
+						<li>第一层行二下第二层行二</li>
+						<li>第一层行二下第二层行三</li>
+					</ol>
+				</li>
+			</ul>
+	</body>
+</html>
