@@ -1,0 +1,38 @@
+/*******************************公共代码**************************************/
+/**
+ * 解决浮动后父元素高度塌陷的问题
+ */
+.clearfix:before,
+.clearfix:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.clearfix{
+	/*兼容IE6*/
+	zoom: 1;
+}
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+
+html{
+	font: 12px 宋体;
+}
+
+a{
+	text-decoration: none;
+}
+/*清空input默认值*/
+input{
+	border: none;
+	padding: 0;
+}
+img{
+	border: none;
+}

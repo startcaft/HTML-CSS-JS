@@ -1,0 +1,321 @@
+@charset "utf-8";
+
+/*版心970px，居中*/
+
+a{
+	color: #000;
+}
+
+/**
+ * top相关
+ */
+.top{
+	height: 26px;
+	background: #f7f7f7;
+	border-bottom: 1px solid #d8d8d8;
+}
+.top-page{
+	width: 970px;
+	margin: 0 auto;
+	height: 26px;/*设置了高度，无须担心高度塌陷*/
+	/*background: red;*/
+}
+.top-page-l{
+	line-height: 26px;
+}
+.top-page-r{
+	line-height: 26px;
+}
+.top-page-r li{
+	float: left;
+	padding-right: 10px;
+}
+/*雪碧图的使用一般集合backgroun属性*/
+.top-page-r li i{
+	width: 7px;
+	height: 4px;
+	background: url(../img/icons/css_sprite.png);
+	display: inline-block;/*i为行内标签*/
+}
+.top-page-r li i{
+	margin-left: 3px;
+}
+
+/**
+ * logo相关
+ */
+.logo{
+	width: 970px;
+	height: 98px;
+	margin: 0 auto;
+	/*background: red;*/
+}
+.logo-l{
+	width: 199px;
+	height: 55px;
+	/*background: red;*/
+	margin: 24px 0 19px 9px;
+	background: url(../img/icons/css_sprite.png) 0px -13px no-repeat;
+	text-indent: -1000em;/*不显示h1的文字，但是搜索引擎可以看见，h1的权重比例是比div更高的*/
+}
+.logo-r{
+	width: 530px;
+	height: 42px;
+	background: #f1f1f1;
+	border: 1px solid #c9c9c9;
+	margin-top: 29px;
+}
+.logo-r .logo-r-search{
+	width: 418px;
+	height: 28px;
+	line-height: 28px;
+	border:1px solid #c9c9c9;
+	color: #999;
+}
+.logo-r .logo-r-btn{
+	width: 99px;
+	height: 30px;
+	background: #2f70d0;
+}
+.logo-r .logo-r-content{
+	margin: 5px 5px 5px 4px;
+}
+
+/**
+ * 导航条相关
+ */
+.nav{
+	width: 970px;
+	height: 25px;
+	margin: 0 auto;
+	border-bottom: 2px solid #0266a3;
+}
+.nav li{
+	float: left;
+	padding: 0px 15px;
+	font: bold 16px "宋体";
+}
+.nav li a{/*a标签无法继承父标签的文本颜色*/
+	display: inline-block;
+	height: 25px;
+	line-height: 25px;
+	color: #0266a3;
+}
+.nav li:hover{
+	background: #0266a3;
+}
+.nav li a:hover{
+	color: #fff;
+}
+
+.banner{
+	width: 970px;
+	height: 210px;
+	margin: 0 auto;
+	/*background: pink;*/
+	margin-top: 10px;
+}
+.banner .subNav{
+	width: 200px;
+	height: 210px;
+	/*background: red;*/
+	margin-right: 11px;
+}
+.subNav h2{
+	height: 30px;
+	font: bold 16px/30px "宋体";
+	color: #fff;
+	background: #0266a3;
+	padding-left: 20px;
+}
+.subNav ul{
+	background: #EBF0F6;
+	height: 180px;
+}
+.subNav li{
+	font: 14px "宋体";
+	padding-top: 10px;
+	margin-left: 9px;
+}
+.subNav li i{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-top: -5px;
+	background: url(../img/icons/css_sprite.png) 0 -76px;
+	/*设置元素垂直对齐的方式*/
+	vertical-align: middle;
+}
+.subNav li a{
+	margin-left: 15px;
+}
+.banner .ad{
+	width: 520px;
+	height: 210px;
+	background: url(../img/banner.png);
+}
+.banner .message{
+	width: 230px;
+	height: 210px;
+	/*background: blue;*/
+}
+.message .message-top{
+	height: 95px;
+	border: 1px solid #ddd;
+	background: #f7faff;
+}
+.message .message-bottom{
+	height: 92px;
+	background: #f7f7f7;
+	margin-top: 21px;
+}
+.message .message-top i{
+	display: inline-block;
+	width: 40px;
+	height:40px;
+	background: url(../img/app.png);
+	margin: 20px 10px 0 10px;
+}
+.message-top .w_text{
+	font-weight: bold;
+	padding: 7px 0 0 18px;
+}
+.message-top .text_desc{
+	margin-top: 25px;
+}
+.message-bottom .find-message{
+	text-align: center;
+	font: bold 16px "宋体";
+	padding-top: 10px;
+	color: #999999;
+}
+.message-bottom .phone{
+	text-align: center;
+	font: bold 14px/18px "宋体";
+	color: #6ab2e6;
+	margin-top: 5px;
+}
+.message-bottom .phone i{
+	display: inline-block;
+	width: 13px;
+	height: 18px;
+	background: url(../img/icons/icon-phone.png);
+	vertical-align: middle;
+}
+.message-bottom .btn{
+	width: 81px;
+	height: 23px;
+	background: url(../img/qq_btn.png);
+	margin-top: 5px;
+	margin-left: 75px;
+}
+.message-bottom .btn:hover{
+	cursor: pointer;
+}
+
+/**
+ * 产品分类展示
+ */
+.category{
+	width: 950px;
+	height: 34px;
+	margin: 0 auto;border-top: 2px solid #c3d7e4;
+	margin-top: 14px;
+	background: #ecf1f7;
+	font: bold 12px/34px "宋体";
+	padding-left: 20px;
+}
+.product{
+	width: 970px;
+	height: 345px;
+	margin: 0 auto;
+	margin-top: 12px;
+	/*background: red;*/
+}
+.product .product-l{
+	width: 727px;
+	height: 345px;
+	border: 1px solid #d8d8d8;
+	/*background: yellow;*/
+}
+.product .product_l_top{
+	height: 155px;
+	/*background: yellow;*/
+	padding: 17px 0 0 26px;
+}
+.product_l_top .p_l_t_detail1{
+	width: 350px;
+	height: 146px;
+	/*background: blue;*/
+}
+.product_l_top .p_buy{
+	width: 99px;
+	height: 143px;
+	/*background-color: paleturquoise;*/
+}
+.product_l_top .p_buy .p_img{
+	height: 100px;
+	border: 1px solid #cacaca;
+}
+.product_l_top .p_buy .p_img i {
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	background: url(../img/product.png) center center;
+	margin: 5px 4px 0 4px;
+}
+.product_l_top .p_buy .p_buy_btn{
+	border: 0;
+	padding: 0;
+	width: 99px;
+	height: 26px;
+	background: #0a84e3;
+	color: white;
+	margin-top: 15px;
+	font: bold 14px "宋体";
+}
+.product_l_top .p_buy .p_buy_btn:hover{
+	cursor: pointer;
+}
+
+.product_l_top .p_detail{
+	width: 250px;
+	height: 143px;
+	/*background: red;*/
+}
+.product_l_top .p_detail .p_d_title{
+	font-size: 14px;
+	padding: 10px 0 0 10px;
+}
+.product_l_top .p_detail .p_d_secondtitle{
+	padding: 13px 0 0 15px;
+	color: #863e01;
+}
+.product_l_top .p_detail .p_d_money{
+	padding: 23px 0 0 11px;
+}
+.product_l_top .p_detail .p_d_money span{
+	color: red;
+	font-weight: bold;
+	font-size: 13px;
+}
+.product_l_top .p_detail .p_d_money s{
+	text-decoration: line-through;
+}
+.p_detail .p_d_limit{
+	font-size: 14px;
+	padding: 28px 0 0 11px;
+}
+.p_detail .p_d_limit span{
+	color: red;
+	font-weight: bold;
+}
+.product .product-r{
+	width: 230px;
+	height: 345px;
+	background: green;
+}
+.product .product_l_line{
+	margin: 0 4px;
+	border-top: 1px solid #eee;
+}
