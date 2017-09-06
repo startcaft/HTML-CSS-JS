@@ -33,6 +33,13 @@ input,textarea{
     -webkit-appearance: none;						/*清楚浏览器默认的样式*/
 }
 
+/*浮动*/
+.f_left {
+	float: left;
+}
+.f_right {
+	float: right;
+}
 /*清除浮动*/
 .clearfix::before,
 .clearfix::after{
@@ -49,4 +56,16 @@ input,textarea{
     background-size: 200px 200px;
 }
 
+.m_l10 {
+	margin-left: 10px;
+}
+.m_r10 {
+	margin-right: 10px;
+}
+.m_t10 {
+	margin-top: 10px;
+}
+.m_b10 {
+	margin-bottom: 10px;
+}
 

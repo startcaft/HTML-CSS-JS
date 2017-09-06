@@ -12,7 +12,7 @@ body{
 /*搜索头部*/
 .jd_header {
     width: 100%;
-    position: fixed;			/*fixed 是以  最外层容器 计算的*/
+    position: fixed;			/*fixed 是以 浏览器窗口 计算的，脱离标准文档流*/
     top: 0;
     left: 0;
     height: 40px;
@@ -155,7 +155,6 @@ body{
 }
 .jd_product > .product_box {
 	width: 100%;
-	min-height: 300px;
 	background: #fff;
 	margin-top: 10px;
 	box-shadow: 0 0 1px #e0e0e0;
@@ -176,11 +175,111 @@ body{
 	color: #666;
 }
 .jd_product > .product_box > .product_box_title > h3::before {
+	/*
+	 * display: block;
+	 * position: absolute 
+	 * float: left;
+	 * 都可以转块级元素
+	 */
 	content: "";
-	position: absolute;
+	position: absolute;							
 	top: 10px;
 	left: 10px;
 	width: 3px;
 	height: 12px;
 	background: #d8505c;
+}
+
+/*秒杀*/
+.jd_secondkill {
+	
+}
+.jd_secondkill .sk_icon {
+	background: url("../images/seckill-icon.png") no-repeat;
+	background-size: 16px 20px;
+	width: 16px;
+	height: 20px;
+	float: left;
+	margin-top: 6px;
+}
+.jd_secondkill .sk_name {
+	color: #d8505c;
+	font-size: 15px;
+	margin-left: 10px;
+	float: left;
+}
+.jd_secondkill .sk_time {
+	float: left;
+	margin-top: 9px;
+}
+.jd_secondkill .sk_time > span {
+	float: left;
+	height: 15px;
+	width: 15px;
+	line-height: 15px;
+	text-align: center;
+	background: #333;
+	color: #fff;
+	margin-left: 3px;
+}
+.jd_secondkill .sk_time > span:nth-child(3n) {	/*3 的倍数*/
+	background: #fff;
+	color: #333;
+	width: 5px;
+}
+
+.jd_secondkill .product_box_content > ul {
+	width: 100;
+	padding: 10px 0;
+}
+.jd_secondkill .product_box_content > ul > li {
+	width: 33.333333%;
+	float: left;
+	font-size: 12px;
+	text-align: center;
+}
+.jd_secondkill .product_box_content > ul > li > a {
+	display: block;
+	width: 100%;
+	border-right: 1px solid #e0e0e0;
+}
+.jd_secondkill .product_box_content > ul > li:last-child > a {
+	border-right: none;
+}
+.jd_secondkill .product_box_content > ul > li > a > img {
+	width: 60%;
+	margin: 0 auto;
+	display: block;
+}
+/**
+ * E:first-of-type 选择同类型的同级的第一个
+ * E:last-of-type  选择同类型的同级的最后一个
+ * E:nth-of-type   选择同类型的统计的第N个
+ */
+.jd_secondkill .product_box_content > ul > li > p:first-of-type {
+	color: #d8505c;
+	padding-top: 5px;
+}
+.jd_secondkill .product_box_content > ul > li > p:last-of-type {
+	text-decoration: line-through;
+	color: #666;
+}
+
+/*组合样式*/
+.w_50 {
+	width: 50%;
+	display: block;
+}
+.w_50 > img {
+	display: block;
+	width: 100%;
+}
+.border_left{
+    border-left: 1px solid #ebebeb;
+}
+.border_right{
+    border-right: 1px solid #ebebeb;
+}
+.border_bottom{
+    border-bottom: 1px solid #ebebeb;
 }
