@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+/*重置*/
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+}
+
+body{
+    font-size: 14px;
+    font-family: "Microsoft YaHei",sans-serif;		/*第二个是手机的一个默认的字体*/
+    color: #000;
+    background: #f5f5f5;
+}
+
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;		/*a标签在移动端点击会有透视色，设置为透明*/
+	color: #FFFFFF;
+}
+a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+ol,
+ul {
+	list-style: none;
+}
+
+input,
+textarea {
+	outline: none;
+	border: none;
+	-webkit-appearance: none;
+}
+
+/*清除浮动*/
+.clearfix::before,
+.clearfix::after{
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+[class^="icon_"]{
+    background: url("../../images/sprites.png") no-repeat;
+    background-size: 200px 200px;
+}

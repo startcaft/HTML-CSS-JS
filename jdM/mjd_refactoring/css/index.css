@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+/*移动端主体布局，适配320~640像素*/
+.index_layout {
+	min-width: 320px;
+	max-width: 640px;
+	height: 1000px;
+	margin: 0 auto;
+}
+
+/**
+ * index_header_box盒子需要固定并居中;
+ * 这里采用父容器（.index_header）fixed，相对浏览器定点定位;
+ * 让它跟布局一样的宽度，然后在父元素中居中
+ */
+.index_layout .index_header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;						/*通屏宽度*/
+	height: 40px;
+	z-index: 99999;
+}
+.index_layout .index_header .index_header_box {
+	min-width: 320px;
+	max-width: 640px;
+	background: rgba(201,21,35,0.85);
+	margin: 0 auto;						/*在.index_header中居中*/
+	/*position: relative;*/					/*开启相对定位，让.icon_log input 和a在里面定位*/
+	height: 40px;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: center;
+}
+
+.index_layout .index_header .index_header_box .icon_logo {
+	background-position:0 -103px;
+	height: 30px;
+	width: 60px;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.index_layout .index_header .index_header_box > form {
+	height: 40px;
+	flex: 2;
+	position: relative;
+}
+.index_layout .index_header .index_header_box > form .icon_search {
+	height: 20px;
+	width: 20px;
+	background-position: -60px -109px;
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: 5px;
+}
+.index_layout .index_header .index_header_box > form > input {
+	height: 30px;
+	border-radius: 15px;
+	width: 100%;
+	margin-top: 5px;
+	padding-left: 30px;
+}
+.index_layout .index_header .index_header_box > a {
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+/**
+ * ul下10个li，8,1,2,3,4,5,6,7,8,1，10张图片循环播放
+ * 一个li下的a和img宽度都是100%；
+ * 所有的li做浮动，ul的总长度就是10*100% = 1000%；每一个li的宽度就是10%；
+ * 那么ul的宽度为1000%，每次X方向移动-10%；
+ */
+.index_banner {
+	width: 100%;								
+	overflow: hidden;
+	position: relative;						/*让第二个ul让盒子中绝对定位*/
+}
+.index_banner > ul:first-child {
+	width: 1000%;
+	-webkit-transform: translateX(-10%);		
+	transform: translateX(-10%);
+}
+.index_banner > ul:first-child li {
+	float: left;
+	width: 10%;
+}
+.index_banner > ul:first-child li > a,
+.index_banner > ul:first-child li > a > img
+ {
+	display: block;
+	width: 100%;
+}
+/**
+ * 让第二个ul在盒子中绝对定位且水平居中：left:50%；margin-left：-自身宽度的一般；
+ * 让ul成为弹性盒子，里面的li水平居中排列
+ */
+.index_banner > ul:last-child {
+	position: absolute;
+	left: 50%;
+	margin-left: -60px;
+	width: 120px;
+	height: 6px;
+	bottom: 6px;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+}
+.index_banner > ul:last-child > li {
+	height: 6px;
+	width: 6px;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	margin-left: 8px;
+}
+.index_banner > ul:last-child > li.active {
+	background: #fff;
+}
+
+
+
