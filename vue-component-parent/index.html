@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>component父子组件</title>
+	</head>
+	<body>
+		<div id="app">
+			<game></game>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var lol = {
+				template : `
+					<div style="color:red">Lol英雄:蛮王</div>
+				`
+			}
+			
+			var game = {
+				template : `
+					<div>
+						<p>你玩过的游戏最刚的人物是谁?</p>
+						<lol></lol>
+					</div>
+				`,
+				components : {								//父组件引用子组件
+					'lol':lol
+				}
+			}
+			
+			new Vue({
+				el:'#app',
+				data:{},
+				components : {
+					'game':game
+				}
+			});
+		</script>
+	</body>
+</html>
