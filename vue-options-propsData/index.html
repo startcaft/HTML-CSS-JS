@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>propsData 选项</title>
+	</head>
+	<body>
+		
+		<h1>PropsData Option Demo</h1>
+    	<hr>
+    	<header></header>
+
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var my_header = Vue.extend({
+				template:`<p>{{ message }} - {{ name }}</p>`,
+				data : function (){
+					return {message : 'Hello'}
+				},
+				props:['name']
+			});
+			
+			var propsDataObj = {name : 'world!'};
+			new my_header({propsData:propsDataObj}).$mount('header');
+		</script>
+	</body>
+</html>
