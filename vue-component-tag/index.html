@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<component v-bind:is="who"></component>
+			<button @click="changeComponent">changeComponent</button>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			//先定义三个组件对象
+			var componentA={
+			     template:`<div>I'm componentA</div>`
+			}
+			 var componentB={
+			      template:`<div>I'm componentB</div>`
+			}
+			var componentC={
+			    template:`<div>I'm componentC</div>`
+			}
+			
+			new Vue({
+				el:'#app',
+				data:{
+					who:'componentA'
+				},
+				components:{
+					'componentA':componentA,
+					'componentB':componentB,
+					'componentC':componentC
+				},
+				methods:{
+					changeComponent : function(componentName){
+						if(this.who === 'componentA'){
+	                        this.who = 'componentB';
+	                    }else if(this.who ==='componentB'){
+	                        this.who = 'componentC';
+	                    }else{
+	                        this.who = 'componentA';
+	                    }
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
