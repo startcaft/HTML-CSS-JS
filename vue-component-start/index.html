@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>初始Vue组件Component</title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<logo></logo>
+			<hr />
+			<wow></wow>
+		</div>
+		
+		<div id="app2">
+			<!--全局的，其他作用域也可以使用-->
+			<logo></logo>
+			<hr />
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			
+			//注册全局组件
+			Vue.component('logo',{
+				template:`
+					<div style="color:red">全局化注册的logo标签</div>
+				`
+			});
+			
+			var app = new Vue({
+				el:'#app',
+				data:{},
+				//注册局部组件
+				components:{
+					"wow":{
+						template:`
+							<div style="color:blue;">局部注册的wow标签</div>
+						`
+					}
+				}
+			});
+			
+			var app2 = new Vue({
+				el:'#app2',
+				data:{}
+			});
+		</script>
+	</body>
+</html>
