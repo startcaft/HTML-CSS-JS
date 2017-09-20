@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<h1>slot内置组件</h1>
+		
+		<div id="app">
+			<blog>
+				<span slot="blogUrl">{{ blogData.blogUrl }}</span>
+				<span slot="netName">{{ blogData.netName }}</span>
+				<span slot="skill">{{ blogData.skill }}</span>
+			</blog>
+		</div>
+		
+		<template id="blog">
+			<div>
+				<p>博客地址：<slot name="blogUrl"></slot></p>
+				<p>网名：<slot name="netName"></slot></p>
+				<p>技术类型：<slot name="skill"></slot></p>
+			</div>
+		</template>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			
+			var blog = {
+				template : '#blog'
+			}
+			
+			new Vue({
+				el : '#app',
+				data:{
+					blogData : {
+						blogUrl : 'http://www.cnblogs.com/123/',
+						netName : '123',
+						skill : 'java'
+					}
+				},
+				components : {
+					'blog': blog
+				}
+			});
+		</script>
+	</body>
+</html>
