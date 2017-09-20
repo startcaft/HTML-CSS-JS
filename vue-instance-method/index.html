@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>实例方法</title>
+	</head>
+	<body>
+		<h1>实例方法</h1>
+		<div id="app">
+		</div>
+		<button onclick="lol.$destroy()">卸载</button>
+		<button onclick="reload()">更新</button>
+		<button onclick="tick()">更改数据</button>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var lol = Vue.extend({
+				template : `<p>{{ message }}</p>`,
+				data : function(){
+					return {
+						message : 'Hello Bitch!'
+					}
+				},
+				mounted : function(){						//既然是扩展，当然可以扩展生命周期函数
+					console.log('mounted 被创建');
+				},
+				destroyed : function(){
+					console.log('destroyed 已卸载');
+				},
+				updated : function(){
+					console.log('updated 已更新');
+				}
+			})
+			var lol = new lol().$mount('#app');				//挂载
+			
+			function reload(){
+				lol.$forceUpdate();
+			}
+			
+			function tick(){
+			    lol.message = "update message info ";
+			    lol.$nextTick(function(){
+			        console.log('message更新完后我被调用了');
+			    })
+			}
+		</script>
+	</body>
+</html>
