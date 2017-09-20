@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>watch选项监控数据成员的变化</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>今日温度：{{ temperature }} °C</p>
+			<p>穿衣建议：{{ suggestion }}</p>
+			<p>
+				<button @click="rise">升温</button>
+				<button @click="reduce">降温</button>
+			</p>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var suggestions = ['夹克长裙','T恤短袖','棉衣羽绒服'];
+			var app = new Vue({
+				el:'#app',
+				data:{
+					temperature:14,
+					suggestion:suggestions[0]
+				},
+				methods:{
+					rise:function(){
+						this.temperature += 5;
+					},
+					reduce:function(){
+						this.temperature -= 5;
+					}
+				},
+				watch:{
+//					temperature :function(newVal,oldVal){		//watch能监控到数据成员的新值和老值
+//						if(newVal >= 26){
+//							this.suggestion = suggestions[1];
+//						}
+//						else if(newVal <26 && newVal > 0){
+//							this.suggestion = suggestions[0];
+//						}
+//						else{
+//							this.suggestion = suggestions[2];
+//						}
+//					}
+				}
+			});
+			
+			app.$watch('temperature',function(newVal,oldVal){
+				if(newVal >= 26){
+					this.suggestion = suggestions[1];
+				}
+				else if(newVal <26 && newVal > 0){
+					this.suggestion = suggestions[0];
+				}
+				else{
+					this.suggestion = suggestions[2];
+				}
+			});
+		</script>
+	</body>
+</html>
