@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+		<script>
+			var app = new Vue({
+				el : '#app',
+				data : {
+					message : 'Hello World!'
+				},
+				mounted :function(){
+					$('#app').html('我是jQuery!');
+				},
+				methods:{
+					add : function(){
+						console.log('调用构造器内的add方法');
+					}
+				}
+			});
+			
+			app.add();
+		</script>
+	</body>
+</html>
