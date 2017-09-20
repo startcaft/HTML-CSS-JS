@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<h1>实例事件</h1>
+		<div id="app">
+			{{ count }}
+			<p>
+				<button @click="add">Add</button>
+			</p>
+		</div>
+		
+		<button onclick="reduce()">外部Recude</button>
+		<button onclick="once()">外部RecudeOnce</button>
+		<button onclick="off()">关闭事件</button>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var app = new Vue({
+				el : '#app',
+				data : {
+					count : 1
+				},
+				methods : {
+					add : function (){
+						this.count++;
+					}
+				}
+			});
+			
+			app.$on('reduce',function(){
+				this.count--;
+			});
+			
+			//外部调用内部事件
+			function reduce(){
+			    app.$emit('reduce');
+			}
+			
+			app.$once('once',function(){
+				this.count--;
+			});
+			
+			function once(){
+				app.$emit('once');
+			}
+			
+			function off(){
+				app.$off('reduce');
+			}
+		</script>
+	</body>
+</html>
