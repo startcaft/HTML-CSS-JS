@@ -6,28 +6,24 @@ import Hi1 from '@/components/Hi1'
 import Hi2 from '@/components/Hi2'
 import Hi3 from '@/components/Hi3'
 import Hi4 from '@/components/Hi4'
+import UrlParams from '@/components/UrlParams'
 
-Vue.use(Router)															//Vue全局使用vue-reouter
+Vue.use(Router)															
 
-export default new Router({									//配置路由
-  routes: [																	//routes数组
-    {																				//每一个对象都是一个路由链接
-      path: '/',														//path属性表示路由链接路径
-      name: 'Hello',												//name属性表示路由名称，暂时无用，大小写不敏感
+export default new Router({									
+  routes: [																	
+    {																				
+      path: '/',														
+      name: 'Hello',												
       components : {
     			default : Hello,
     			left : Hi3,
     			right : Hi4
       }
     },
-    {																				
-      path: '/change',														
-      name: 'Hello',												
-      components : {
-    			default : Hello,
-    			left : Hi4,
-    			right : Hi3
-      }
+    {
+    	path : '/urlParams/:newsId(\\d+)/:newsTitle',
+    	component: UrlParams
     },
     {
     	path: '/hi',

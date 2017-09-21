@@ -5,7 +5,8 @@
     	<router-link to="/">首页</router-link> |
     	<router-link to="/HI">Hi页</router-link> |
     	<router-link v-bind:to="{name : 'Hello/Hi/Hi1',params : {name : '张三',age : 19}}">Hi页1</router-link> |
-    	<router-link to="/hi/hi2">Hi页2</router-link>
+    	<router-link to="/hi/hi2">Hi页2</router-link> |
+    	<router-link to="/urlParams/1698/Vue is very good!">Url传递参数</router-link> 
     </p>
     <p>
     		通过路径对象name传递的参数：{{ $route.name }}
