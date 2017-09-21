@@ -45,6 +45,14 @@ export default new Router({
     			component:Hi2
     		}
     	]
+    },
+    {
+    	path : '/goHome',
+    	redirect : '/'
+    },
+    {
+    	path : '/goParams/:newsId(\\d+)/:newsTitle',
+    	redirect : '/urlParams/:newsId(\\d+)/:newsTitle'
     }
   ]
 })

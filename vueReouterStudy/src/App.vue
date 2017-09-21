@@ -7,6 +7,8 @@
     	<router-link v-bind:to="{name : 'Hello/Hi/Hi1',params : {name : '张三',age : 19}}">Hi页1</router-link> |
     	<router-link to="/hi/hi2">Hi页2</router-link> |
     	<router-link to="/urlParams/1698/Vue is very good!">Url传递参数</router-link> 
+    	<router-link to="/goHome">重定向redirect</router-link>
+    	<router-link to="/goParams/555555/太流弊了!">重定向redirect传参</router-link>
     </p>
     <p>
     		通过路径对象name传递的参数：{{ $route.name }}
@@ -26,32 +28,31 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-#content {
-	display: flex;
-	display: -webkit-flex;
-	flex-direction: row;
-	justify-content: center
-}
-#content > div {
-	align-items: center;
-	flex: 1 1 50%;
-	text-align: center;
-	height: 300px;
-}
-#content > div:first-child {
-	background-color: #e0e0e0;
-}
-#content > div:last-child {
-	background-color: gray;
-}
-
+	#app {
+	  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  text-align: center;
+	  color: #2c3e50;
+	  margin-top: 60px;
+	}
+	
+	#content {
+		display: flex;
+		display: -webkit-flex;
+		flex-direction: row;
+		justify-content: center
+	}
+	#content > div {
+		align-items: center;
+		flex: 1 1 50%;
+		text-align: center;
+		height: 300px;
+	}
+	#content > div:first-child {
+		background-color: #e0e0e0;
+	}
+	#content > div:last-child {
+		background-color: gray;
+	}
 </style>
