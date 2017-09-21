@@ -53,6 +53,11 @@ export default new Router({
     {
     	path : '/goParams/:newsId(\\d+)/:newsTitle',
     	redirect : '/urlParams/:newsId(\\d+)/:newsTitle'
+    },
+    {
+    	path : '/hi',
+    	component : Hi,
+    	alias : '/nb'
     }
   ]
 })

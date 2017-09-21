@@ -9,11 +9,14 @@
     	<router-link to="/urlParams/1698/Vue is very good!">Url传递参数</router-link> 
     	<router-link to="/goHome">重定向redirect</router-link>
     	<router-link to="/goParams/555555/太流弊了!">重定向redirect传参</router-link>
+    	<router-link to="/nb">Hi页别名</router-link> |
     </p>
     <p>
     		通过路径对象name传递的参数：{{ $route.name }}
   	</p>
-    <router-view></router-view>
+  	<transition name="fade" mode="out-in">
+    	<router-view></router-view>
+    </transition>
     <div id="content">
     		<router-view name="left" ></router-view>
     		<router-view name="right"></router-view>
@@ -54,5 +57,20 @@ export default {
 	}
 	#content > div:last-child {
 		background-color: gray;
+	}
+	
+	/*路由切换动画*/
+	.fade-enter {
+	  opacity:0;
+	}
+	.fade-leave{
+	  opacity:1;
+	}
+	.fade-enter-active{
+	  transition:opacity .5s;
+	}
+	.fade-leave-active{
+	  opacity:0;
+	  transition:opacity .5s;
 	}
 </style>
