@@ -1,16 +1,15 @@
 <template>
 	<div class="hello">
 		<h1>{{ msg }}</h1>
-		<router-view class="aaa"></router-view>
 	</div>
 </template>
 
 <script>
 	export default {
-		name : 'hi',
+		name : 'hi2',
 		data : function(){
 			return {
-				msg : 'This is Hi Page.'
+				msg : 'This is Hi2 Page.'
 			}
 		}
 	}
