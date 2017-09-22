@@ -2,6 +2,11 @@
   <div id="app">
     <img src="./assets/logo.png">
     <p>
+    	<button @click="goBack()">后退</button>
+    	<button @click="goForward()">前进</button>
+    	<button @click="goHome()">回到首页</button>
+    </p>
+    <p>
     	<router-link to="/">首页</router-link> |
     	<router-link to="/HI">Hi页</router-link> |
     	<router-link v-bind:to="{name : 'Hello/Hi/Hi1',params : {name : '张三',age : 19}}">Hi页1</router-link> |
@@ -27,7 +32,18 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+  	goBack : function(){
+  		this.$router.go(-1);
+  	},
+  	goForward : function(){
+  		this.$router.go(1);
+  	},
+  	goHome : function(){
+  		this.$router.push('/');
+  	}
+  }
 }
 </script>
 
