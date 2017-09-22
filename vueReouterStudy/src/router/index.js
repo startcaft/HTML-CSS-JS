@@ -21,6 +21,14 @@ export default new Router({
     			default : Hello,
     			left : Hi3,
     			right : Hi4
+      },
+      // ES6语法，有点像Lambda表达式
+      beforeEnter:(to,form,next) => {
+      	console.log(to);
+      	console.log(form);
+      	next();
+      	//next(true);
+      	//next('/Hi');
       }
     },
     {

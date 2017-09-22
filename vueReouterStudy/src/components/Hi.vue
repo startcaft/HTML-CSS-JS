@@ -12,6 +12,14 @@
 			return {
 				msg : 'This is Hi Page.'
 			}
+		},
+		beforeRouteEnter:(to,form,next) => {
+			console.log('准备进入Hi路由');
+			next();
+		},
+		beforeRouteLeave:(to,form,next) => {
+			console.log('准备离开Hi路由');
+			next();
 		}
 	}
 </script>
