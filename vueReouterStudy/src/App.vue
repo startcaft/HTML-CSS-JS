@@ -10,6 +10,7 @@
     	<router-link to="/goHome">重定向redirect</router-link>
     	<router-link to="/goParams/555555/太流弊了!">重定向redirect传参</router-link>
     	<router-link to="/nb">Hi页别名</router-link> |
+    	<router-link to="/adasdasd">不存在的路由</router-link>
     </p>
     <p>
     		通过路径对象name传递的参数：{{ $route.name }}
