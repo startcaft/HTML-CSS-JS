@@ -12,7 +12,7 @@
 
 <script>
 	import store from '@/vuex/store'
-	import { mapState } from 'vuex'			//引入 mapState 
+	import { mapState } from 'vuex'			//引入 mapState ，注意花括号
 
 	export default({
 		data : function(){
