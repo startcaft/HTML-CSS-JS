@@ -4,7 +4,6 @@
     <div class="main">
       <router-view></router-view>
     </div>
-    
   </div>
 </template>
 
@@ -25,12 +24,11 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    display: flex;
+    flex-direction: row;
   }
   .main {
-    float: left;
-    width: 95%;
-    background-color: #EFF2F7;
+    flex: auto;
     height: 100%;
-    overflow: hidden;
   }
 </style>
