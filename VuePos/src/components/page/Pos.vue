@@ -48,7 +48,17 @@
             </ul>
             <div class="right-bottom">
                 <el-tabs type="border-card">
-                    <el-tab-pane label="汉堡">汉堡</el-tab-pane>
+                    <el-tab-pane label="汉堡">
+                        <ul class="cookList">
+                            <li v-for="cook in cookList">
+                                <img :src="cook.goodsImg"/>
+                                <div class="foodText">
+                                    <span class="foodName">{{ cook.goodsName }}</span>
+                                    <span>￥{{ cook.price }}元</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </el-tab-pane>
                     <el-tab-pane label="小食">小食</el-tab-pane>
                     <el-tab-pane label="饮料">饮料</el-tab-pane>
                     <el-tab-pane label="套餐">套餐</el-tab-pane>
@@ -74,6 +84,59 @@
                     {name : '深海鳕鱼堡',price : 14,id : 3},
                     {name : '大份薯条',price : 12,id : 4},
                     {name : '墨西哥鸡肉卷',price : 10,id : 5}
+                ],
+                cookList : [
+                    {
+                        goodsId:1,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos001.jpg",
+                        goodsName:'香辣鸡腿堡',
+                        price:18
+                    }, {
+                        goodsId:2,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos002.jpg",
+                        goodsName:'田园鸡腿堡',
+                        price:15
+                    }, {
+                        goodsId:3,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos004.jpg",
+                        goodsName:'和风汉堡',
+                        price:15
+                    }, {
+                        goodsId:4,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg",
+                        goodsName:'快乐全家桶',
+                        price:80
+                    }, {
+                        goodsId:5,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg",
+                        goodsName:'脆皮炸鸡腿',
+                        price:10
+                    }, {
+                        goodsId:6,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos004.jpg",
+                        goodsName:'魔法鸡块',
+                        price:20
+                    }, {
+                        goodsId:7,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos001.jpg",
+                        goodsName:'可乐大杯',
+                        price:10
+                    }, {
+                        goodsId:8,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg",
+                        goodsName:'雪顶咖啡',
+                        price:18
+                    }, {
+                        goodsId:9,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos002.jpg",
+                        goodsName:'大块鸡米花',
+                        price:15
+                    }, {
+                        goodsId:20,
+                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos002.jpg",
+                        goodsName:'香脆鸡柳',
+                        price:17
+                    }
                 ]
             }
         },
@@ -142,9 +205,36 @@
         color: #58B7FF;
     }
 
+    /*右边底部盒子*/
     .pos-right .right-bottom {
         border-top: 1px solid #C0CCDA;
         margin-top: 20px;
+    }
+    .pos-right .right-bottom .cookList {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .pos-right .right-bottom .cookList > li {
+        border: 1px solid #E5E9F2;
+        display: flex;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 200px;
+        margin: 10px 10px;
+    }
+    .pos-right .right-bottom .cookList > li > img {
+        height: 100px;
+        width: 100px;
+    }
+    .pos-right .right-bottom .cookList > li .foodText {
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+    }
+    .pos-right .right-bottom .cookList > li .foodText .foodName {
+        padding: 10px 10px;
+        color: red;
     }
 </style>
 
