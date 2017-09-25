@@ -14,22 +14,21 @@
                             </template>
                         </el-table-column>
                     </el-table>
+                    <div class="pos-order-btns">
+                        <el-button type="primary">
+                            <i class="el-icon-warning"></i>
+                            挂起
+                        </el-button>
+                        <el-button type="primary">
+                            <i class="el-icon-delete2"></i>
+                            删除
+                        </el-button>
+                        <el-button type="primary">
+                            <i class="el-icon-check"></i>
+                            结账
+                        </el-button>
+                    </div>
                 </el-tab-pane>
-                <div class="pos-order-btns">
-                    <el-button type="primary">
-                        <i class="el-icon-warning"></i>
-                        挂起
-                    </el-button>
-                    <el-button type="primary">
-                        <i class="el-icon-delete2"></i>
-                        删除
-                    </el-button>
-                    <el-button type="primary">
-                        <i class="el-icon-check"></i>
-                        结账
-                    </el-button>
-                </div>
-                
                 <el-tab-pane label="挂单">
                     挂单
                 </el-tab-pane>
@@ -38,12 +37,13 @@
                 </el-tab-pane>
             </el-tabs>
         </div>
-        <div class="pos-right">
+        <div class="pos-right" id="posRight">
             <div class="right-title">常用商品</div>
             <ul>
                 <li v-for="item in hotList">
-                    <span>{{item.name}}</span>
-                    <span class="right-price">￥{{item.price}}元</span>
+                    <a :id="item.id">
+                        <el-tag type="primary">{{item.name}}&nbsp;&nbsp;￥{{item.price}}元</el-tag>
+                    </a>
                 </li>
             </ul>
             <div class="right-bottom">
@@ -91,19 +91,26 @@
 </script>
 
 <style scoped>
+
+    /*容器，开启弹性盒子*/
     .pos {
         display: flex;
     }
-
+    
+    /*左边盒子，固定宽度*/
     .pos-left {
         flex-basis: 400px;
         align-self: stretch;
         background-color: #F9FAFC;
         border-right: 1px solid #C0CCDA;
     }
+    .pos-left .pos-order-btns {
+        margin-top: 20px;
+    }
+
+    /*右边盒子，弹性伸缩*/
     .pos-right {
         flex: auto;
-        background-color: #eeeeee;
     }
     .pos-right .right-top {
         height: 50%;
@@ -124,10 +131,12 @@
     }
     .pos-right > ul > li {
         flex: none;
-        padding: 10px;
-        margin: 10px;
-        background-color: #ffffff;
-        border: 1px solid #E5E9F2;
+        padding: 5px;
+        margin: 5px;
+    }
+    .pos-right > ul > li > a {
+        display: block;
+        height: 50px;
     }
     .pos-right .right-price {
         color: #58B7FF;
@@ -137,7 +146,6 @@
         border-top: 1px solid #C0CCDA;
         margin-top: 20px;
     }
-    
 </style>
 
 
