@@ -41,8 +41,8 @@
             <div class="right-title">常用商品</div>
             <ul>
                 <li v-for="item in hotList">
-                    <a :id="item.id">
-                        <el-tag type="primary">{{item.name}}&nbsp;&nbsp;￥{{item.price}}元</el-tag>
+                    <a :id="item.goodsId">
+                        <el-tag type="primary">{{item.goodsName}}&nbsp;&nbsp;￥{{item.price}}元</el-tag>
                     </a>
                 </li>
             </ul>
@@ -50,7 +50,7 @@
                 <el-tabs type="border-card">
                     <el-tab-pane label="汉堡">
                         <ul class="cookList">
-                            <li v-for="cook in cookList">
+                            <li v-for="cook in type0Goods">
                                 <img :src="cook.goodsImg"/>
                                 <div class="foodText">
                                     <span class="foodName">{{ cook.goodsName }}</span>
@@ -59,9 +59,39 @@
                             </li>
                         </ul>
                     </el-tab-pane>
-                    <el-tab-pane label="小食">小食</el-tab-pane>
-                    <el-tab-pane label="饮料">饮料</el-tab-pane>
-                    <el-tab-pane label="套餐">套餐</el-tab-pane>
+                    <el-tab-pane label="小食">
+                        <ul class="cookList">
+                            <li v-for="cook in type1Goods">
+                                <img :src="cook.goodsImg"/>
+                                <div class="foodText">
+                                    <span class="foodName">{{ cook.goodsName }}</span>
+                                    <span>￥{{ cook.price }}元</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </el-tab-pane>
+                    <el-tab-pane label="饮料">
+                        <ul class="cookList">
+                            <li v-for="cook in type2Goods">
+                                <img :src="cook.goodsImg"/>
+                                <div class="foodText">
+                                    <span class="foodName">{{ cook.goodsName }}</span>
+                                    <span>￥{{ cook.price }}元</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </el-tab-pane>
+                    <el-tab-pane label="套餐">
+                        <ul class="cookList">
+                            <li v-for="cook in type3Goods">
+                                <img :src="cook.goodsImg"/>
+                                <div class="foodText">
+                                    <span class="foodName">{{ cook.goodsName }}</span>
+                                    <span>￥{{ cook.price }}元</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </el-tab-pane>
                 </el-tabs>
             </div>
         </div>
@@ -69,6 +99,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name : 'pos',
         data : function(){
@@ -79,67 +110,14 @@
                     {name : '可口可乐',count : 1,price : 6}
                 ],
                 hotList : [
-                    {name : '香辣鸡腿堡',price : 18,id : 1},
-                    {name : '可口可乐',price : 6,id : 2},
-                    {name : '深海鳕鱼堡',price : 14,id : 3},
-                    {name : '大份薯条',price : 12,id : 4},
-                    {name : '墨西哥鸡肉卷',price : 10,id : 5}
                 ],
-                cookList : [
-                    {
-                        goodsId:1,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos001.jpg",
-                        goodsName:'香辣鸡腿堡',
-                        price:18
-                    }, {
-                        goodsId:2,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos002.jpg",
-                        goodsName:'田园鸡腿堡',
-                        price:15
-                    }, {
-                        goodsId:3,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos004.jpg",
-                        goodsName:'和风汉堡',
-                        price:15
-                    }, {
-                        goodsId:4,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg",
-                        goodsName:'快乐全家桶',
-                        price:80
-                    }, {
-                        goodsId:5,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg",
-                        goodsName:'脆皮炸鸡腿',
-                        price:10
-                    }, {
-                        goodsId:6,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos004.jpg",
-                        goodsName:'魔法鸡块',
-                        price:20
-                    }, {
-                        goodsId:7,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos001.jpg",
-                        goodsName:'可乐大杯',
-                        price:10
-                    }, {
-                        goodsId:8,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg",
-                        goodsName:'雪顶咖啡',
-                        price:18
-                    }, {
-                        goodsId:9,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos002.jpg",
-                        goodsName:'大块鸡米花',
-                        price:15
-                    }, {
-                        goodsId:20,
-                        goodsImg:"http://7xjyw1.com1.z0.glb.clouddn.com/pos002.jpg",
-                        goodsName:'香脆鸡柳',
-                        price:17
-                    }
-                ]
+                type0Goods:[],
+                type1Goods:[],
+                type2Goods:[],
+                type3Goods:[]
             }
         },
+        //钩子函数
         mounted : function(){
             //操作实际DOM 需要在 挂载完成钩子函数里面进行；
             //设置订单栏布局的高度；
@@ -149,6 +127,28 @@
                 .style.height = windowHeiht + 'px';
             // document.getElementById('posContent')
             //     .style.height = posOrderDivHeight + 'px';
+        },
+        created : function(){
+            axios.get('http://jspang.com/DemoApi/oftenGoods.php')
+                .then(response => {
+                    // console.log(response)
+                    this.hotList = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            
+            axios.get('http://jspang.com/DemoApi/typeGoods.php')
+                .then(response=>{
+                    // console.log(response);
+                    this.type0Goods = response.data[0];
+                    this.type1Goods = response.data[1];
+                    this.type2Goods = response.data[2];
+                    this.type3Goods = response.data[3];
+                })
+                .catch(error=>{
+                    console.log(error);
+                });
         }
     }
 </script>
