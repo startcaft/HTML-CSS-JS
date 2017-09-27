@@ -4,13 +4,13 @@
             <el-tabs type="border-card">
                 <el-tab-pane label="点餐">
                     <el-table :data="tableData" border style="width: 100%">
-                        <el-table-column prop="name" label="商品名称"></el-table-column>
+                        <el-table-column prop="goodsName" label="商品名称"></el-table-column>
                         <el-table-column prop="count" label="数量" width="50"></el-table-column>
                         <el-table-column prop="price" label="单价" width="70"></el-table-column>
                         <el-table-column label="操作" width="100" fixed="right">
                             <template scope="scope">
-                                <el-button type="text" size="small">删除</el-button>
-                                <el-button type="text" size="small">增加</el-button>
+                               <el-button type="text" size="small">删除</el-button>
+                                <el-button type="text" size="small" @click="addOrderList(scope.row)">增加</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -41,7 +41,7 @@
             <div class="right-title">常用商品</div>
             <ul>
                 <li v-for="item in hotList">
-                    <a :id="item.goodsId">
+                    <a :id="item.goodsId" @click="addOrderList(item)">
                         <el-tag type="primary">{{item.goodsName}}&nbsp;&nbsp;￥{{item.price}}元</el-tag>
                     </a>
                 </li>
@@ -51,7 +51,7 @@
                     <el-tab-pane label="汉堡">
                         <ul class="cookList">
                             <li v-for="cook in type0Goods">
-                                <img :src="cook.goodsImg"/>
+                                <img :src="cook.goodsImg" @click="addOrderList(cook)"/>
                                 <div class="foodText">
                                     <span class="foodName">{{ cook.goodsName }}</span>
                                     <span>￥{{ cook.price }}元</span>
@@ -61,7 +61,7 @@
                     </el-tab-pane>
                     <el-tab-pane label="小食">
                         <ul class="cookList">
-                            <li v-for="cook in type1Goods">
+                            <li v-for="cook in type1Goods" @click="addOrderList(cook)">
                                 <img :src="cook.goodsImg"/>
                                 <div class="foodText">
                                     <span class="foodName">{{ cook.goodsName }}</span>
@@ -72,7 +72,7 @@
                     </el-tab-pane>
                     <el-tab-pane label="饮料">
                         <ul class="cookList">
-                            <li v-for="cook in type2Goods">
+                            <li v-for="cook in type2Goods" @click="addOrderList(cook)">
                                 <img :src="cook.goodsImg"/>
                                 <div class="foodText">
                                     <span class="foodName">{{ cook.goodsName }}</span>
@@ -83,7 +83,7 @@
                     </el-tab-pane>
                     <el-tab-pane label="套餐">
                         <ul class="cookList">
-                            <li v-for="cook in type3Goods">
+                            <li v-for="cook in type3Goods" @click="addOrderList(cook)">
                                 <img :src="cook.goodsImg"/>
                                 <div class="foodText">
                                     <span class="foodName">{{ cook.goodsName }}</span>
@@ -105,16 +105,46 @@
         data : function(){
             return {
                 tableData: [
-                    {name : '香辣鸡腿堡',count : 1,price : 18},
-                    {name : '深海鳕鱼堡',count : 1,price : 14},
-                    {name : '可口可乐',count : 1,price : 6}
+                    {goodsName : '香辣鸡腿堡',count : 1,price : 18,goodsId : 1},
+                    {goodsName : '脆皮炸鸡腿',count : 1,price : 15,goodsId : 5},
+                    {goodsName : '可乐大杯',count : 1,price : 10,goodsId : 7}
                 ],
-                hotList : [
-                ],
-                type0Goods:[],
-                type1Goods:[],
-                type2Goods:[],
-                type3Goods:[]
+                hotList : [],
+                type0Goods : [],
+                type1Goods : [],
+                type2Goods : [],
+                type3Goods : []
+            }
+        },
+        methods : {
+            addOrderList : function(item){
+                // console.log(item);
+                this.totalCount = 0;
+                this.totalMoney = 0;
+                let isHave = false;
+                //判断当前点击的商品是否在订单列表中
+                for(let i = 0; i < this.tableData.length; i++){
+                    //console.log(this.tableData[i].goodsId);
+                    if(this.tableData[i].goodsId === item.goodsId){
+                        isHave = true;
+                    }
+                }
+                //根据isHave的值判断订单列表中是否已经有此商品
+                if(isHave){
+                    //存在就进行数量的添加
+                    let arr = this.tableData.filter(o => o.goodsId === item.goodsId);
+                    arr[0].count++;
+                }
+                else{
+                    let newGoods = {goodsId:item.goodsId,goodsName:item.goodsName,price:item.price,count:1};
+                    this.tableData.push(newGoods);
+                }
+
+                //进行数量和价格的汇总计算
+                this.tableData.forEach((element) => {
+                    this.totalCount += element.count;
+                    this.totalMoney += this.totalMoney + (element.price * element.count);
+                })
             }
         },
         //钩子函数
@@ -174,6 +204,7 @@
     /*右边盒子，弹性伸缩*/
     .pos-right {
         flex: auto;
+        background-color: #F9FAFC;
     }
     .pos-right .right-top {
         height: 50%;
@@ -199,7 +230,12 @@
     }
     .pos-right > ul > li > a {
         display: block;
-        height: 50px;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+    .pos-right > ul > li > a:hover {
+        cursor: pointer;
     }
     .pos-right .right-price {
         color: #58B7FF;
@@ -226,6 +262,7 @@
     .pos-right .right-bottom .cookList > li > img {
         height: 100px;
         width: 100px;
+        cursor: pointer;
     }
     .pos-right .right-bottom .cookList > li .foodText {
         display: flex;
