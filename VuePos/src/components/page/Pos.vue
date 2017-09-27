@@ -9,21 +9,24 @@
                         <el-table-column prop="price" label="单价" width="70"></el-table-column>
                         <el-table-column label="操作" width="100" fixed="right">
                             <template scope="scope">
-                               <el-button type="text" size="small">删除</el-button>
+                                <el-button type="text" size="small" @click="deleteSingle(scope.row)">删除</el-button>
                                 <el-button type="text" size="small" @click="addOrderList(scope.row)">增加</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
+                    <div class="pos-order-total">
+                        <small>总金额：￥{{ totalMoney }}元</small>
+                    </div>
                     <div class="pos-order-btns">
                         <el-button type="primary">
                             <i class="el-icon-warning"></i>
                             挂起
                         </el-button>
-                        <el-button type="primary">
+                        <el-button type="primary" @click="delAllGoods()">
                             <i class="el-icon-delete2"></i>
                             删除
                         </el-button>
-                        <el-button type="primary">
+                        <el-button type="primary" @click="checkout()">
                             <i class="el-icon-check"></i>
                             结账
                         </el-button>
@@ -104,29 +107,25 @@
         name : 'pos',
         data : function(){
             return {
-                tableData: [
-                    {goodsName : '香辣鸡腿堡',count : 1,price : 18,goodsId : 1},
-                    {goodsName : '脆皮炸鸡腿',count : 1,price : 15,goodsId : 5},
-                    {goodsName : '可乐大杯',count : 1,price : 10,goodsId : 7}
-                ],
+                tableData: [],
                 hotList : [],
                 type0Goods : [],
                 type1Goods : [],
                 type2Goods : [],
-                type3Goods : []
+                type3Goods : [],
+                totalMoney : 0
             }
         },
         methods : {
             addOrderList : function(item){
                 // console.log(item);
-                this.totalCount = 0;
-                this.totalMoney = 0;
                 let isHave = false;
                 //判断当前点击的商品是否在订单列表中
                 for(let i = 0; i < this.tableData.length; i++){
                     //console.log(this.tableData[i].goodsId);
                     if(this.tableData[i].goodsId === item.goodsId){
                         isHave = true;
+                        break;
                     }
                 }
                 //根据isHave的值判断订单列表中是否已经有此商品
@@ -139,12 +138,38 @@
                     let newGoods = {goodsId:item.goodsId,goodsName:item.goodsName,price:item.price,count:1};
                     this.tableData.push(newGoods);
                 }
-
-                //进行数量和价格的汇总计算
-                this.tableData.forEach((element) => {
-                    this.totalCount += element.count;
-                    this.totalMoney += this.totalMoney + (element.price * element.count);
-                })
+                this.getAllMoney();
+            },
+            deleteSingle : function(item){
+                 this.tableData=this.tableData.filter(o => o.goodsId != item.goodsId);
+                 this.getAllMoney();
+            },
+            getAllMoney(){
+                this.totalMoney=0;
+                if(this.tableData){
+                    this.tableData.forEach((element) => {
+                        this.totalMoney=this.totalMoney+(element.price*element.count);   
+                    });
+                }
+                
+            },
+            delAllGoods() {
+                this.tableData = [];
+                this.totalMoney = 0;
+            },
+            checkout() {
+                if (this.totalCount!=0) {
+                    this.tableData = [];
+                    this.totalCount = 0;
+                    this.totalMoney = 0;
+                    this.$message({
+                        message: '结账成功，感谢你又为店里出了一份力!',
+                        type: 'success'
+                    });
+            
+                }else{
+                    this.$message.error('不能空结。老板了解你急切的心情！');
+                }
             }
         },
         //钩子函数
@@ -192,7 +217,8 @@
     
     /*左边盒子，固定宽度*/
     .pos-left {
-        flex-basis: 400px;
+        /* flex-basis: 400px; */
+        flex: 1 1 30%;
         align-self: stretch;
         background-color: #F9FAFC;
         border-right: 1px solid #C0CCDA;
@@ -203,7 +229,8 @@
 
     /*右边盒子，弹性伸缩*/
     .pos-right {
-        flex: auto;
+        /* flex: auto; */
+        flex: 1 1 70%;
         background-color: #F9FAFC;
     }
     .pos-right .right-top {
