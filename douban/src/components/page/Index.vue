@@ -26,48 +26,6 @@
 			我的
 		</footer-item>
 	</footer-bar>
-    <!--<div class="d_footer">
-        <div id="tab1" class="footer_item is-active">
-            <a>
-                <span class="item_icon">
-                    <img src="../../assets/images/ic_tab_home_active.png" />
-                </span>
-                <span class="item_text">首页</span>
-            </a>
-        </div>
-        <div id="tab2" class="footer_item">
-            <a>
-                <span class="item_icon">
-                    <img src="../../assets/images/ic_tab_subject_normal.png" />
-                </span>
-                <span class="item_text">书影城</span>
-            </a>
-        </div>
-        <div id="tab3" class="footer_item">
-            <a>
-                <span class="item_icon">
-                    <img src="../../assets/images/ic_tab_status_normal.png" />
-                </span>
-                <span class="item_text">广播</span>
-            </a>
-        </div>
-        <div id="tab4" class="footer_item">
-            <a>
-                <span class="item_icon">
-                    <img src="../../assets/images/ic_tab_group_normal.png" />
-                </span>
-                <span class="item_text">小组</span>
-            </a>
-        </div>
-        <div id="tab5" class="footer_item">
-            <a>
-                <span class="item_icon">
-                    <img src="../../assets/images/ic_tab_profile_normal.png" />
-                </span>
-                <span class="item_text">我的</span>
-            </a>
-        </div>
-    </div>-->
 </template>
 
 <script>

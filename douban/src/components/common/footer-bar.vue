@@ -12,7 +12,7 @@
 	}
 </script>
 
-<style>
+<style lang="less">
 	.d_footer {
         display: flex;
         display: -webkit-flex;
