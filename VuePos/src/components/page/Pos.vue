@@ -15,7 +15,9 @@
                         </el-table-column>
                     </el-table>
                     <div class="pos-order-total">
-                        <small>总金额：￥{{ totalMoney }}元</small>
+                        <el-tag type="danger">
+                            总金额：￥{{ totalMoney }}元
+                        </el-tag>
                     </div>
                     <div class="pos-order-btns">
                         <el-button type="primary">
@@ -222,6 +224,9 @@
         align-self: stretch;
         background-color: #F9FAFC;
         border-right: 1px solid #C0CCDA;
+    }
+    .pos-left .pos-order-total {
+        margin-top: 20px;
     }
     .pos-left .pos-order-btns {
         margin-top: 20px;
